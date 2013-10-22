@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  database: feedster_dev
+
+test:
+  adapter: postgresql
+  database: feedster_test
+
+production:
+  adapter: postgresql
+  database: feedster
