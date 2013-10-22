@@ -1,0 +1,5 @@
+<h1><%= @item.title %></h1>
+<h2>In <%= link_to @item.category.name, category_path(@item.category) %></h2>
+<div>
+  <%= @item.content %>
+</div>

@@ -3,6 +3,6 @@ class Item < ActiveRecord::Base
 
   belongs_to :category
 
-  friendly_id :tiitle, use: :slugged
+  friendly_id :title, use: :slugged
 
 end

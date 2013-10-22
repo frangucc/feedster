@@ -3,7 +3,9 @@ Feedster::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :categories
+  resources :categories do
+    resources :items
+  end
   resources :items
 
   get ':id', to: 'categories#show'
