@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chicago Sun-Times</title>
-    <link>http://www.suntimes.com</link>
-    <description>Latest news from the Chicago Sun-Times Online</description>
+    <title>Feedster</title>
+    <link>http://feedster.herokuapp.com</link>
+    <description>Feedster feeds</description>
     <language>en-us</language>
     <category>News</category>
     <image>
-    <url>http://www.suntimes.com/csp/cms/sites/STM/assets/img/logos/suntimes.gif </url>
-    <title>Chicago Sun-Times</title>
-    <link>http://www.suntimes.com</link>
-    <width>84</width>
-    <height>34</height>
+      <url></url>
+      <title>Feedster</title>
+      <link>Feedster</link>
+      <width>84</width>
+      <height>34</height>
     </image>
-    <ttl>30</ttl>
     <dc:rights>Copyright 2013</dc:rights>
 
     <%= yield %>
