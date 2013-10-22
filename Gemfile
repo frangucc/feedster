@@ -12,6 +12,8 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'friendly_id'
 
+gem 'rabl'
+
 gem 'rails_12factor'
 
 # Use SCSS for stylesheets
