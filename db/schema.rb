@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022212435) do
+ActiveRecord::Schema.define(version: 20131022224906) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -83,9 +83,18 @@ ActiveRecord::Schema.define(version: 20131022212435) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "author_id"
+    t.string   "keywords"
+    t.string   "inspiration_url"
   end
 
   add_index "items", ["slug"], name: "index_items_on_slug", unique: true, using: :btree
+
+  create_table "related_items", force: true do |t|
+    t.integer  "from_item_id"
+    t.integer  "to_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

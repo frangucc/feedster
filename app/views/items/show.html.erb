@@ -14,4 +14,15 @@
   </ol>
 
   <p><%= @item.content %></p>
+
+  <% if @item.items.any? %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Related items</div>
+    <div class="list-group">
+      <% @item.items.each do |ri| %>
+      <%= link_to ri.title, category_item_path(ri.category, ri), class: 'list-group-item' %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>
