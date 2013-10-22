@@ -1,24 +1,40 @@
-<h1><%= @category.name %></h1>
-<% if @category.parent %>
-<h2>In <%= link_to @category.parent.name, category_path(@category.parent) %></h2>
-<% end %>
+<div class="container">
 
-<% if @category.categories.any? %>
-<h2>Subcategories</h2>
-<ul>
-  <% @category.categories.each do |c| %>
-  <li><%= link_to c.name, category_path(c) %></li>
-  <% end %>
-</ul>
-<% end %>
+  <div class="navbar navbar-default">
+    <div class="navbar-header">
+      <a class="navbar-brand">Feedster</a>
+    </div>
+  </div>
 
-<% if @category.items.any? %>
-<h2>Items</h2>
-<ul>
-  <% @category.items.each do |i| %>
-    <li><%= link_to i.title, category_item_path(@category, i) %></li>
+  <ol class="breadcrumb">
+    <% if @category.parent %>
+    <li><%= link_to @category.parent.name, category_path(@category.parent) %></li>
+    <% end %>
+    <li class="active"><%= @category.name %></li>
+  </ol>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">In <strong><%= @category.name %></strong></div>
+    <% if @category.items.any? %>
+    <div class="list-group">
+      <% @category.items.each do |i| %>
+      <%= link_to i.title, category_item_path(@category, i), class: 'list-group-item' %>
+      <% end %>
+    </div>
+    <% else %>
+    <div class="panel-body">This category has no items.</div>
+    <% end %>
+  </div>
+
+  <% if @category.categories.any? %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Subcategories</div>
+    <div class="list-group">
+      <% @category.categories.each do |c| %>
+      <%= link_to c.name, category_path(c), class: 'list-group-item' %>
+      <% end %>
+    </div>
+  </div>
   <% end %>
-</ul>
-<% else %>
-<p>This category has no items.</p>
-<% end %>
+
+</div>
