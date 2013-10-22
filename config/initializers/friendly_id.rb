@@ -9,6 +9,17 @@
 #
 # http://norman.github.io/friendly_id/file.Guide.html
 
+
+class ActiveRecord::Base
+  def self.find(id)
+    if id.is_a?(Numeric)
+      super
+    else
+      friendly.find(id)
+    end
+  end
+end
+
 FriendlyId.defaults do |config|
   # ## Reserved Words
   #
