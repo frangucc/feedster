@@ -12,6 +12,8 @@ ActiveAdmin.register Item do
       f.input :title
       f.input :content
       f.input :author
+      f.input :inspiration_url
+      f.input :keywords
     end
     f.actions
   end
