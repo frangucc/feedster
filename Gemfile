@@ -10,6 +10,8 @@ gem 'devise'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+gem 'friendly_id'
+
 gem 'rails_12factor'
 
 # Use SCSS for stylesheets
