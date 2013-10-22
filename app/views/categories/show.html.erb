@@ -13,18 +13,16 @@
     <li class="active"><%= @category.name %></li>
   </ol>
 
+  <% if @category.items.any? %>
   <div class="panel panel-primary">
     <div class="panel-heading">In <strong><%= @category.name %></strong></div>
-    <% if @category.items.any? %>
     <div class="list-group">
       <% @category.items.each do |i| %>
       <%= link_to i.title, category_item_path(@category, i), class: 'list-group-item' %>
       <% end %>
     </div>
-    <% else %>
-    <div class="panel-body">This category has no items.</div>
-    <% end %>
   </div>
+  <% end %>
 
   <% if @category.categories.any? %>
   <div class="panel panel-default">

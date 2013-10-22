@@ -1,5 +1,17 @@
-<h1><%= @item.title %></h1>
-<h2>In <%= link_to @item.category.name, category_path(@item.category) %></h2>
-<div>
-  <%= @item.content %>
+<div class="container">
+  <div class="navbar navbar-default">
+    <div class="navbar-header">
+      <a class="navbar-brand">Feedster</a>
+    </div>
+  </div>
+
+  <ol class="breadcrumb">
+    <% if @item.category.parent %>
+    <li><%= link_to @item.category.parent.name, category_path(@item.category.parent) %></li>
+    <% end %>
+    <li><%= link_to @item.category.name, category_path(@item.category) %></li>
+    <li class="active"><%= @item.title %></li>
+  </ol>
+
+  <p><%= @item.content %></p>
 </div>
