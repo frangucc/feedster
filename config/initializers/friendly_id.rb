@@ -12,7 +12,7 @@
 
 class ActiveRecord::Base
   def self.find(id)
-    if id.is_a?(Numeric)
+    if id.to_i != 0
       super
     else
       friendly.find(id)

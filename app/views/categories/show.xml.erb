@@ -1,0 +1,10 @@
+<% @category.items.each do |i| %>
+<item>
+  <title><![CDATA[<%= i.title %>]]></title>
+  <dc:creator><![CDATA[<%= i.author.name %>]]></dc:creator>
+  <description><%= i.content %></description>
+  <pubDate><%= i.created_at.iso8601 %></pubDate>
+  <guid><%= item_url(i) %></guid>
+  <link><%= item_url(i) %></link>
+</item>
+<% end %>
