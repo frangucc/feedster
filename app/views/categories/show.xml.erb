@@ -1,7 +1,9 @@
 <% @category.items.each do |i| %>
 <item>
   <title><![CDATA[<%= i.title %>]]></title>
+  <% unless i.author.nil? %>
   <dc:creator><![CDATA[<%= i.author.name %>]]></dc:creator>
+  <% end %>
   <description><%= i.content %></description>
   <pubDate><%= i.created_at.iso8601 %></pubDate>
   <guid><%= item_url(i) %></guid>
