@@ -12,6 +12,8 @@ class Item < ActiveRecord::Base
            :through => :related_items,
            :source => :to_item
 
+  has_many :attachments
+
   friendly_id :title, use: :slugged
 
 end
