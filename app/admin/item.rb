@@ -22,7 +22,6 @@ ActiveAdmin.register Item do
     attributes_table do
       row :id
       row :title
-      row :content
       row :author
       row :category
       row :keywords
