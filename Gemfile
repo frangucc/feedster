@@ -23,6 +23,8 @@ gem 'paperclip'
 
 gem 'foreman'
 
+gem 'redcarpet'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

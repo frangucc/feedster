@@ -18,4 +18,19 @@ ActiveAdmin.register Item do
     f.actions
   end
 
+  show do |item|
+    attributes_table do
+      row :id
+      row :title
+      row :content
+      row :author
+      row :category
+      row :keywords
+      row :inspiration_url
+      row :preview do
+        link_to 'Preview', item_path(item, :xml), target: '_blank'
+      end
+    end
+  end
+
 end
