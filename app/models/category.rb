@@ -10,6 +10,11 @@ class Category < ActiveRecord::Base
 
   has_many :items
 
+  has_many :app_parent_categories
+
+  has_many :apps,
+           :through => :app_parent_categories
+
   friendly_id :name, use: :slugged
 
 end
