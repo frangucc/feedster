@@ -9,16 +9,18 @@ ActiveAdmin.register App do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :parent_category
+      f.input :parent_category, as: :select, collection: Category.all.map {|c| [c.label, c.id]}
     end
     f.actions
   end
 
-  show do
+  show do |app|
     attributes_table do
       row :id
       row :name
-      row :parent_category
+      row :parent_category do
+        link_to app.parent_category.label, admin_category_path(app.parent_category)
+      end
     end
   end
 

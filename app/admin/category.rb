@@ -9,7 +9,7 @@ ActiveAdmin.register Category do
   form multipart: true do |f|
     f.inputs do
       f.input :name
-      f.input :parent
+      f.input :parent, as: :select, collection: Category.all.map {|c| [c.label, c.id]}
       f.input :image, as: :file
     end
     f.actions
@@ -19,7 +19,9 @@ ActiveAdmin.register Category do
     attributes_table do
       row :id
       row :name
-      row :parent
+      row :parent do
+        link_to category.parent.label, admin_category_path(category.parent)
+      end
       row :image do
         link_to category.image.url, category.image.url
       end

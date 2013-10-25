@@ -8,7 +8,7 @@ ActiveAdmin.register Item do
 
   form multipart: true do |f|
     f.inputs do
-      f.input :category
+      f.input :category, as: :select, collection: Category.all.map {|c| [c.label, c.id]}
       f.input :title
       f.input :content
       f.input :image, as: :file
@@ -27,7 +27,9 @@ ActiveAdmin.register Item do
         link_to item.image.url, item.image.url
       end
       row :author
-      row :category
+      row :category do
+        link_to item.category.label, admin_category_path(item.category)
+      end
       row :keywords
       row :inspiration_url
       row :preview do
