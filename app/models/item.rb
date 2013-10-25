@@ -14,6 +14,8 @@ class Item < ActiveRecord::Base
 
   has_many :attachments
 
+  has_many :item_metas
+
   friendly_id :title, use: :slugged
 
 end

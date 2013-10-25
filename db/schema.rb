@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131024184004) do
+ActiveRecord::Schema.define(version: 20131025004547) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20131024184004) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
   create_table "attachments", force: true do |t|
@@ -97,6 +98,14 @@ ActiveRecord::Schema.define(version: 20131024184004) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "item_meta", force: true do |t|
+    t.integer  "item_id"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", force: true do |t|
     t.string   "title"
