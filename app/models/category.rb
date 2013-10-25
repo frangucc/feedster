@@ -21,4 +21,20 @@ class Category < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
+  def label
+    names = _parent_name_before_name(self)
+    names.join(' -> ')
+  end
+
+  private
+
+  def _parent_name_before_name(category)
+    names = []
+    unless category.parent.nil?
+      names << _parent_name_before_name(category.parent)
+    end
+    names << category.name
+    names.flatten
+  end
+
 end
