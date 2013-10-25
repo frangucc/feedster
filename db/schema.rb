@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025004547) do
+ActiveRecord::Schema.define(version: 20131025010229) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -82,9 +82,21 @@ ActiveRecord::Schema.define(version: 20131025004547) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
+
+  create_table "category_meta", force: true do |t|
+    t.integer  "category_id"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -117,6 +129,10 @@ ActiveRecord::Schema.define(version: 20131025004547) do
     t.integer  "author_id"
     t.string   "keywords"
     t.string   "inspiration_url"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "items", ["slug"], name: "index_items_on_slug", unique: true, using: :btree

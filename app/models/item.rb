@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
 
   belongs_to :author
 
+  has_attached_file :image
+
   has_many :related_items,
            :foreign_key => :from_item_id
 

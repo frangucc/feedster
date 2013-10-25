@@ -2,15 +2,16 @@ ActiveAdmin.register Item do
 
   controller do
     def permitted_params
-      params.permit(:item => [:category_id, :title, :content, :author_id, :keywords, :inspiration_url])
+      params.permit(:item => [:category_id, :title, :content, :author_id, :keywords, :inspiration_url, :image])
     end
   end
 
-  form do |f|
+  form multipart: true do |f|
     f.inputs do
       f.input :category
       f.input :title
       f.input :content
+      f.input :image, as: :file
       f.input :author
       f.input :inspiration_url
       f.input :keywords
@@ -22,6 +23,9 @@ ActiveAdmin.register Item do
     attributes_table do
       row :id
       row :title
+      row :image do
+        link_to item.image.url, item.image.url
+      end
       row :author
       row :category
       row :keywords

@@ -5,6 +5,8 @@ class Category < ActiveRecord::Base
              :foreign_key => :parent_id,
              :class_name => "Category"
 
+  has_attached_file :image
+
   has_many :categories,
            :foreign_key => :parent_id
 
@@ -14,6 +16,8 @@ class Category < ActiveRecord::Base
 
   has_many :apps,
            :through => :app_parent_categories
+
+  has_many :category_metas
 
   friendly_id :name, use: :slugged
 
