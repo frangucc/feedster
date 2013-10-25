@@ -1,0 +1,10 @@
+<item>
+  <title><![CDATA[<%= item.title %>]]></title>
+  <% unless item.author.nil? %>
+  <dc:creator><![CDATA[<%= item.author.name %>]]></dc:creator>
+  <% end %>
+  <description><%= markdown(item.content) %></description>
+  <pubDate><%= item.created_at.iso8601 %></pubDate>
+  <guid><%= item_url(item) %></guid>
+  <link><%= item_url(item) %></link>
+</item>

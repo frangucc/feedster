@@ -5,15 +5,6 @@
     <link>http://feedster.herokuapp.com</link>
     <description>Feedster feeds</description>
     <language>en-us</language>
-    <category>News</category>
-    <image>
-      <url></url>
-      <title>Feedster</title>
-      <link>Feedster</link>
-      <width>84</width>
-      <height>34</height>
-    </image>
-    <dc:rights>Copyright 2013</dc:rights>
 
     <%= yield %>
 
