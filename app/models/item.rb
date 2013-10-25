@@ -14,6 +14,11 @@ class Item < ActiveRecord::Base
            :through => :related_items,
            :source => :to_item
 
+  has_many :list_in_items
+
+  has_many :lists,
+           :through => :list_in_items
+
   has_many :attachments
 
   has_many :item_metas

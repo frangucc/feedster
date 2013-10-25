@@ -1,10 +1,57 @@
 <item>
   <title><![CDATA[<%= item.title %>]]></title>
-  <% unless item.author.nil? %>
-  <dc:creator><![CDATA[<%= item.author.name %>]]></dc:creator>
+  <image><%= item.image.url %></image>
+
+  <% if item.item_metas.any? %>
+  <item_metadata>
+    <% item.item_metas.each do |meta| %>
+      <meta>
+        <key><![CDATA[<%= meta.key %>]]></key>
+        <value><![CDATA[<%= meta.value %>]]></value>
+      </meta>
+    <% end %>
+  </item_metadata>
   <% end %>
-  <description><%= markdown(item.content) %></description>
+
+  <% if item.attachments %>
+  <attachments>
+    <% item.attachments.each do |attachment| %>
+      <attachment><%= attachment.file.url %></attachment>
+    <% end %>
+  </attachments>
+  <% end %>
+
+  <% if item.lists.any? %>
+  <lists>
+    <% item.lists.each do |list| %>
+      <list>
+        <name><![CDATA[<%= list.name %>]]></name>
+        <% list.list_items.each do |li| %>
+        <list_item><![CDATA[<%= li.value %>]]></list_item>
+        <% end %>
+      </list>
+    <% end %>
+  </lists>
+  <% end %>
+
+  <% if item.items.any? %>
+  <related_items>
+    <% item.items.each do |ri| %>
+      <related_item>
+        <title><![CDATA[<%= ri.title %>]]></title>
+        <url><%= item_url(ri, :xml) %></url>
+      </related_item>
+    <% end %>
+  </related_items>
+  <% end %>
+
+  <% unless item.author.nil? %>
+    <author><![CDATA[<%= item.author.name %>]]></author>
+  <% end %>
+  <description><![CDATA[<%= markdown(item.content).html_safe %>]]></description>
   <pubDate><%= item.created_at.iso8601 %></pubDate>
   <guid><%= item_url(item) %></guid>
   <link><%= item_url(item) %></link>
+  <keywords><![CDATA[<%= item.keywords %>]]></keywords>
+  <inspiration_url><%= item.inspiration_url %></inspiration_url>
 </item>

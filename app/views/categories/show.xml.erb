@@ -1,14 +1,37 @@
-<% if @category.categories.any? %>
-<subcategories>
-  <% @category.categories.each do |c|  %>
-    <category>
-      <name><%= c.name %></name>
-      <url><%= category_url(c, :xml) %></url>
-    </category>
-  <% end %>
-</subcategories>
-<% end %>
+<category>
+  <name><![CDATA[<%= @category.name %>]]></name>
+  <image><%= @category.image.url %></image>
 
-<% @category.items.each do |i| %>
-<%= render partial: 'items/item', locals: { item: i } %>
-<% end %>
+  <% if @category.parent %>
+  <parent>
+    <name><![CDATA[<%= @category.parent.name %>]]></name>
+    <url><%= category_url(@category.parent, :xml) %></url>
+  </parent>
+  <% end %>
+
+  <% if @category.categories.any? %>
+  <subcategories>
+    <% @category.categories.each do |c|  %>
+      <category>
+        <name><![CDATA[<%= c.name %>]]></name>
+        <url><%= category_url(c, :xml) %></url>
+      </category>
+    <% end %>
+  </subcategories>
+  <% end %>
+
+  <% if @category.category_metas.any? %>
+  <category_metadata>
+    <% @category.category_metas.each do |meta| %>
+      <meta>
+        <key><![CDATA[<%= meta.key %>]]></key>
+        <value><![CDATA[<%= meta.value %>]]></value>
+      </meta>
+    <% end %>
+  </category_metadata>
+  <% end %>
+
+  <% @category.items.each do |i| %>
+  <%= render partial: 'items/item', locals: { item: i } %>
+  <% end %>
+</category>
