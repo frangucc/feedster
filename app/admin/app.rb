@@ -2,7 +2,7 @@ ActiveAdmin.register App do
 
   controller do
     def permitted_params
-      params.permit(:app => [:name])
+      params.permit(:app => [:name, :category_id])
     end
   end
 
