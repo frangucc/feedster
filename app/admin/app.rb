@@ -19,7 +19,7 @@ ActiveAdmin.register App do
       row :id
       row :name
       row :parent_category do
-        link_to app.parent_category.label, admin_category_path(app.parent_category)
+        link_to app.parent_category.label, admin_category_path(app.parent_category) if app.parent_category
       end
     end
   end
