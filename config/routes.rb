@@ -3,12 +3,13 @@ Feedster::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
+  resources :apps
   resources :categories do
     resources :items
   end
   resources :items
 
-  get ':id', to: 'categories#show'
+  get ':id', to: 'apps#show'
 
   root to: 'pages#home'
 end
