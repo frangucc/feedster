@@ -12,7 +12,7 @@
 
 class ActiveRecord::Base
   def self.find(id)
-    if id.to_i != 0
+    if !id.respond_to?(:to_i) || id.to_i != 0
       super
     else
       friendly.find(id)
