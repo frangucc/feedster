@@ -1,0 +1,18 @@
+
+<category>
+  <name><![CDATA[<%= category.name %>]]></name>
+  <image><%= category.image.url %></image>
+  <url><%= category_url(category, :xml) %></url>
+
+  <% if category.categories.any? %>
+    <subcategories>
+      <% category.categories.each do |c|  %>
+        <%= render partial: 'categories/category', locals: { category: c } %>
+      <% end %>
+    </subcategories>
+  <% end %>
+
+  <% category.items.each do |i| %>
+    <%= render partial: 'items/item', locals: { item: i } %>
+  <% end %>
+</category>
