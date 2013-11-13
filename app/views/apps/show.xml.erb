@@ -1,25 +1,25 @@
 <app>
   <name><![CDATA[<%= @app.name %>]]></name>
 
-  <% unless @app.parent_category.nil? %>
-  <category>
-    <name><![CDATA[<%= @app.parent_category.name %>]]></name>
-    <image><%= @app.parent_category.image.url %></image>
+  <% @app.categories.each do |category| %>
+    <category>
+      <name><![CDATA[<%= category.name %>]]></name>
+      <image><%= category.image.url %></image>
 
-    <% if @app.parent_category.categories.any? %>
-    <subcategories>
-      <% @category.categories.each do |c|  %>
-        <category>
-          <name><![CDATA[<%= c.name %>]]></name>
-          <url><%= category_url(c, :xml) %></url>
-        </category>
+      <% if category.categories.any? %>
+        <subcategories>
+          <% @category.categories.each do |c|  %>
+            <category>
+              <name><![CDATA[<%= c.name %>]]></name>
+              <url><%= category_url(c, :xml) %></url>
+            </category>
+          <% end %>
+        </subcategories>
       <% end %>
-    </subcategories>
-    <% end %>
 
-    <% @app.parent_category.items.each do |i| %>
-    <%= render partial: 'items/item', locals: { item: i } %>
-    <% end %>
-  </category>
+      <% category.items.each do |i| %>
+        <%= render partial: 'items/item', locals: { item: i } %>
+      <% end %>
+    </category>
   <% end %>
 </app>
