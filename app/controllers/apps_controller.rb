@@ -4,4 +4,8 @@ class AppsController < ApplicationController
     @app = App.find(params[:id])
   end
 
+  def configuration
+    @app = App.find(params[:id])
+  end
+
 end

@@ -1,6 +1,5 @@
 <app>
   <name><![CDATA[<%= @app.name %>]]></name>
-
   <% @app.categories.each do |category| %>
     <%= render partial: 'categories/category', locals: { category: category } %>
   <% end %>

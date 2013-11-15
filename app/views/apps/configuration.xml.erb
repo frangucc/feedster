@@ -1,0 +1,6 @@
+<% @app.parent_categories.each do |p| %>
+<category>
+  <title><%= p.name %></title>
+  <rel><%= p.slug %>.xml</rel>
+</category>
+<% end %>

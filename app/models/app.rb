@@ -9,4 +9,8 @@ class App < ActiveRecord::Base
              :foreign_key => :category_id,
              :class_name => 'Category'
 
+  has_many :parent_categories,
+           :through => :app_parent_categories,
+           :source => :category
+
 end

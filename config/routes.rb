@@ -3,7 +3,11 @@ Feedster::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :apps
+  resources :apps do
+    member do
+      get :configuration
+    end
+  end
   resources :categories do
     resources :items
   end
